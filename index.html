@@ -16,11 +16,23 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <style>
-    body { padding-top: 30px; }
-    .text-title { font-weight: bold; margin-top: 20px; }
+    body {
+      padding-top: 30px;
+      font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      line-height: 1.58;
+      color: #202124;
+    }
+    h1, h2, h3, p, li, td, th, .ins_text, .authors {
+      font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    }
+    .text-title {
+      font-weight: 500;
+      margin-top: 20px;
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      line-height: 1.22;
+    }
     .top20 { margin-top: 20px; }
     .bottom10 { margin-bottom: 10px; }
-    .codebox-pre { background: #f8f8f8; padding: 10px; }
     a:hover { opacity: 0.85; transform: translateY(-2px); }
     .codebox { position: relative; }
     .copy-btn {
@@ -28,11 +40,13 @@
       padding: 4px 10px; font-size: 12px; line-height: 1;
       border: 1px solid #ddd; border-radius: 6px; background: #f7f7f7;
       cursor: pointer;
+      font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
     }
     .copy-btn:active { transform: translateY(1px); }
     .codebox-pre {
       margin: 0; padding: 14px;
       overflow: auto; border: 1px solid #eee; border-radius: 8px; background: #fafafa;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
     }
     .link-btn {
       display: inline-flex; align-items: center; margin: 0 10px 10px;

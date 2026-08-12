@@ -103,8 +103,9 @@ ul.authors li a:hover {
 }
 
 .text-title {
-  font-size: 36px;
-  font-weight: 233;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 500;
+  line-height: 1.22;
 }
 
 .text-blue {
@@ -249,7 +250,7 @@ body {
   flex-shrink: 0;
 }
 .publication-authors {
-    font-family: 'Google Sans', sans-serif;
+    font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
 }
 .publication-authors a {
    color: hsl(204, 86%, 53%) !important;
@@ -384,23 +385,23 @@ body {
 .bottom30 { margin-bottom:30px; }
 
 @media screen and (min-width:992px) {
-  body, td, th, tr, p, a {
-    font-family: 'Source Sans Pro', 'Lato', Verdana, Helvetica, sans-serif;
+  body, td, th, tr, p, a, h1, h2, h3, li, .ins_text, .authors, .publication-authors {
+    font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
     font-size: 18px;
   }
 }
 @media screen and (max-width:991px) {
-  body, td, th, tr, p, a {
-    font-family: 'Source Sans Pro', 'Lato', Verdana, Helvetica, sans-serif;
+  body, td, th, tr, p, a, h1, h2, h3, li, .ins_text, .authors, .publication-authors {
+    font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
     font-size: 16px;
   }
 
   .text-title {
-    font-size: 44px;
+    font-size: clamp(2rem, 6vw, 2.8rem);
   }
 
   h1 {
-    font-size: 40px;
+    font-size: clamp(2rem, 6vw, 2.8rem);
   }
 }
 
