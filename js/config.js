@@ -1,52 +1,37 @@
 /**
- * Paper project page configuration
- * Edit this file for each new paper — most pages need no HTML edits.
+ * Paper project page — simple academic layout (edit this file per paper).
  */
 window.PAPER_CONFIG = {
-  title: "Designing Latent Safety Filters for Autonomous Systems",
-  shortTitle: "Design Latent Safety Filter",
+  title: "Paper Title Goes Here",
   authors: [
-    { name: "First Author", affiliation: "Your University", link: "#" },
-    { name: "Second Author", affiliation: "Your University", link: "#" },
-    { name: "Third Author", affiliation: "Partner Lab", link: "#" },
+    { name: "First Author", link: "" },
+    { name: "Second Author", link: "" },
   ],
-  venue: "Conference / Journal Year",
-  abstract:
-    "Replace this abstract with a clear summary of the problem, method, and main findings. Keep it one short paragraph that a visitor can skim in under 20 seconds.",
-
-  // Full-bleed teaser / figure for the hero
-  heroImage:
-    "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=2400&q=80",
-  heroImageAlt: "Teaser figure placeholder — replace with your paper figure",
+  affiliations: ["Your Lab / University"],
+  venue: "arXiv preprint, 2025",
 
   links: {
-    pdf: "#",
-    arxiv: "#",
-    code: "#",
-    video: "",
-    data: "",
-    lab: "https://trustworthyautonomy.github.io/",
+    Paper: "https://arxiv.org/pdf/0000.00000",
+    arXiv: "https://arxiv.org/abs/0000.00000",
+    Code: "",
   },
 
-  bibtex: `@inproceedings{yourkey2025,
-  title     = {Designing Latent Safety Filters for Autonomous Systems},
-  author    = {Author, First and Author, Second and Author, Third},
-  booktitle = {Venue},
-  year      = {2025}
-}`,
+  teaser: {
+    image: "",
+    caption: "",
+  },
 
-  highlights: [
-    {
-      title: "Problem",
-      text: "One sentence on the gap this paper addresses.",
-    },
-    {
-      title: "Approach",
-      text: "One sentence on the core technical idea.",
-    },
-    {
-      title: "Result",
-      text: "One sentence on the strongest empirical or theoretical takeaway.",
-    },
-  ],
+  abstract:
+    "Replace this with the paper abstract or a short overview paragraph.",
+
+  // Optional extra sections: { title, text, image, caption }
+  sections: [],
+
+  bibtex: `@misc{key2025,
+  title={Paper Title Goes Here},
+  author={Author, First and Author, Second},
+  year={2025},
+  eprint={0000.00000},
+  archivePrefix={arXiv}
+}`,
 };

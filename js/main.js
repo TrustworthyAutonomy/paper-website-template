@@ -1,136 +1,71 @@
 (() => {
-  const config = window.PAPER_CONFIG;
-  if (!config) return;
+  const c = window.PAPER_CONFIG;
+  if (!c) return;
 
-  document.title = config.shortTitle || config.title;
+  document.title = c.title;
   const meta = document.querySelector('meta[name="description"]');
-  if (meta) meta.setAttribute("content", config.abstract || config.title);
+  if (meta) meta.setAttribute("content", c.abstract || c.title);
 
-  const setText = (id, value) => {
-    const el = document.getElementById(id);
-    if (el && value != null) el.textContent = value;
-  };
-
-  setText("paper-title", config.title);
-  setText("venue", config.venue);
-  setText("abstract-body", config.abstract);
-  setText("footer-short", config.shortTitle || config.title);
-  setText("bibtex", config.bibtex || "");
-
-  const labHref = config.links?.lab || "https://trustworthyautonomy.github.io/";
-  ["lab-link", "footer-lab"].forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) el.href = labHref;
-  });
-
-  const heroImage = document.getElementById("hero-image");
-  if (heroImage) {
-    heroImage.src = config.heroImage || "";
-    heroImage.alt = config.heroImageAlt || "";
-  }
+  document.getElementById("paper-title").textContent = c.title;
+  document.getElementById("venue").textContent = c.venue || "";
+  document.getElementById("abstract").textContent = c.abstract || "";
+  document.getElementById("bibtex").textContent = c.bibtex || "";
 
   const authorsEl = document.getElementById("authors");
-  if (authorsEl && Array.isArray(config.authors)) {
-    authorsEl.innerHTML = config.authors
-      .map((author, i) => {
-        const name = author.link
-          ? `<a href="${escapeAttr(author.link)}">${escapeHtml(author.name)}</a>`
-          : escapeHtml(author.name);
-        const aff = author.affiliation
-          ? ` <span class="aff">(${escapeHtml(author.affiliation)})</span>`
-          : "";
-        const sep = i < config.authors.length - 1 ? ", " : "";
-        return `${name}${aff}${sep}`;
-      })
-      .join("");
+  authorsEl.innerHTML = (c.authors || [])
+    .map((a, i) => {
+      const name = a.link
+        ? `<a href="${esc(a.link)}">${esc(a.name)}</a>`
+        : esc(a.name);
+      const sep = i < c.authors.length - 1 ? ", " : "";
+      return name + sep;
+    })
+    .join("");
+
+  const affEl = document.getElementById("affiliations");
+  affEl.textContent = (c.affiliations || []).join(" · ");
+
+  const linksEl = document.getElementById("links");
+  linksEl.innerHTML = Object.entries(c.links || {})
+    .filter(([, href]) => href)
+    .map(([label, href]) => `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(label)}</a>`)
+    .join("");
+
+  const teaser = document.getElementById("teaser");
+  if (c.teaser?.image) {
+    teaser.hidden = false;
+    const img = document.getElementById("teaser-image");
+    img.src = c.teaser.image;
+    img.alt = c.teaser.caption || "Teaser figure";
+    document.getElementById("teaser-caption").textContent = c.teaser.caption || "";
   }
 
-  const actions = document.getElementById("hero-actions");
-  if (actions && config.links) {
-    const order = [
-      ["pdf", "PDF", true],
-      ["arxiv", "arXiv", false],
-      ["code", "Code", false],
-      ["video", "Video", false],
-      ["data", "Data", false],
-    ];
-    actions.innerHTML = order
-      .filter(([key]) => config.links[key])
-      .map(([key, label, primary], i) => {
-        const cls = primary || i === 0 ? "btn btn-primary" : "btn btn-ghost";
-        return `<a class="${cls}" href="${escapeAttr(config.links[key])}">${label}</a>`;
-      })
-      .join("");
-  }
-
-  const highlightList = document.getElementById("highlight-list");
-  if (highlightList && Array.isArray(config.highlights)) {
-    highlightList.innerHTML = config.highlights
-      .map(
-        (item) => `
-      <li data-reveal>
-        <h3>${escapeHtml(item.title)}</h3>
-        <p>${escapeHtml(item.text)}</p>
-      </li>`
-      )
-      .join("");
-  }
+  const sectionsEl = document.getElementById("sections");
+  sectionsEl.innerHTML = (c.sections || [])
+    .map((s) => {
+      const fig = s.image
+        ? `<figure><img src="${esc(s.image)}" alt="${esc(s.caption || s.title)}" /><figcaption>${esc(s.caption || "")}</figcaption></figure>`
+        : "";
+      return `<section><h2>${esc(s.title)}</h2><p>${esc(s.text || "")}</p>${fig}</section>`;
+    })
+    .join("");
 
   const copyBtn = document.getElementById("copy-bibtex");
-  if (copyBtn) {
-    copyBtn.addEventListener("click", async () => {
-      const text = config.bibtex || "";
-      try {
-        await navigator.clipboard.writeText(text);
-        copyBtn.textContent = "Copied";
-        window.setTimeout(() => {
-          copyBtn.textContent = "Copy BibTeX";
-        }, 1600);
-      } catch {
-        copyBtn.textContent = "Select text above";
-      }
-    });
-  }
+  copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(c.bibtex || "");
+      copyBtn.textContent = "Copied";
+      setTimeout(() => (copyBtn.textContent = "Copy"), 1400);
+    } catch {
+      copyBtn.textContent = "Select text";
+    }
+  });
 
-  setupReveal();
-
-  function escapeHtml(str) {
+  function esc(str) {
     return String(str)
       .replaceAll("&", "&amp;")
       .replaceAll("<", "&lt;")
       .replaceAll(">", "&gt;")
       .replaceAll('"', "&quot;");
-  }
-
-  function escapeAttr(str) {
-    return escapeHtml(str).replaceAll("'", "&#39;");
-  }
-
-  function setupReveal() {
-    const nodes = document.querySelectorAll("[data-reveal]");
-    if (!("IntersectionObserver" in window)) {
-      nodes.forEach((n) => n.classList.add("is-visible"));
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-    );
-
-    nodes.forEach((node, i) => {
-      if (node.closest(".hero") || node.classList.contains("site-header")) {
-        window.setTimeout(() => node.classList.add("is-visible"), 80 + i * 90);
-      } else {
-        observer.observe(node);
-      }
-    });
   }
 })();

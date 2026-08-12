@@ -8,83 +8,41 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <main class="page">
+      <header class="header">
+        <h1 id="paper-title">Paper title</h1>
+        <p class="authors" id="authors"></p>
+        <p class="affiliations" id="affiliations"></p>
+        <p class="venue" id="venue"></p>
+        <div class="links" id="links"></div>
+      </header>
 
-    <header class="site-header" data-reveal>
-      <a class="brand-mark" id="lab-link" href="https://trustworthyautonomy.github.io/"
-        >Trustworthy Autonomy</a
-      >
-      <nav class="site-nav" aria-label="Primary">
-        <a href="#abstract">Abstract</a>
-        <a href="#highlights">Highlights</a>
-        <a href="#citation">Citation</a>
-      </nav>
-    </header>
+      <figure class="teaser" id="teaser" hidden>
+        <img id="teaser-image" src="" alt="" />
+        <figcaption id="teaser-caption"></figcaption>
+      </figure>
 
-    <main id="main">
-      <section class="hero" id="top" aria-labelledby="paper-title">
-        <div class="hero-media" aria-hidden="true">
-          <img id="hero-image" src="" alt="" />
-          <div class="hero-wash"></div>
-        </div>
-        <div class="hero-copy">
-          <p class="venue" id="venue" data-reveal>Conference / Journal Year</p>
-          <h1 class="paper-title" id="paper-title" data-reveal>
-            Designing Latent Safety Filters for Autonomous Systems
-          </h1>
-          <p class="authors" id="authors" data-reveal></p>
-          <div class="hero-actions" id="hero-actions" data-reveal></div>
-        </div>
+      <section id="overview">
+        <h2>Overview</h2>
+        <p id="abstract"></p>
       </section>
 
-      <section class="section" id="abstract" aria-labelledby="abstract-title">
-        <div class="section-intro" data-reveal>
-          <h2 id="abstract-title">Abstract</h2>
-        </div>
-        <p class="abstract-body" id="abstract-body" data-reveal></p>
-      </section>
+      <div id="sections"></div>
 
-      <section
-        class="section section-alt"
-        id="highlights"
-        aria-labelledby="highlights-title"
-      >
-        <div class="section-intro" data-reveal>
-          <h2 id="highlights-title">Highlights</h2>
-          <p>What to take away if you only have a minute.</p>
-        </div>
-        <ul class="highlight-list" id="highlight-list"></ul>
-      </section>
-
-      <section class="section" id="citation" aria-labelledby="citation-title">
-        <div class="section-intro" data-reveal>
-          <h2 id="citation-title">Citation</h2>
-          <p>Copy BibTeX for your reference manager.</p>
-        </div>
-        <div class="citation-block" data-reveal>
+      <section id="citation">
+        <h2>Citation</h2>
+        <div class="bib-wrap">
+          <button type="button" class="copy-btn" id="copy-bibtex">Copy</button>
           <pre><code id="bibtex"></code></pre>
-          <button type="button" class="btn btn-ghost" id="copy-bibtex">
-            Copy BibTeX
-          </button>
         </div>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <p>
-        <a id="footer-lab" href="https://trustworthyautonomy.github.io/"
-          >Trustworthy Autonomy</a
-        >
-        <span aria-hidden="true"> · </span>
-        <span id="footer-short">Paper</span>
-      </p>
-    </footer>
 
     <script src="js/config.js"></script>
     <script src="js/main.js"></script>
