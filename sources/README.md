@@ -1,9 +1,20 @@
-# Placeholder for figures and videos
+# Site assets (committed)
 
-Add assets here, e.g.:
+Suggested layout:
 
-- `teaser.png` / `teaser.svg`
-- `method.png`
-- `demo.mp4`
+```
+sources/
+  fig1.svg              # optional framework / teaser
+  poster.svg            # conference poster (from poster.pdf via pdftocairo)
+  exp/                  # experiment panels / result images
+    a.png
+    b.png
+  videos/               # failure-case or demo videos
+    demo_a.mp4
+```
 
-Then uncomment the matching blocks in `index.html`.
+Notes:
+
+- Keep paper TeX under `tex/` (gitignored); export figures into `sources/` for the live site.
+- Poster: no Figure caption on the page (use `.poster-figure`).
+- Prefer SVG for diagrams/posters when possible.

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Paper Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Project page template">
+  <meta name="description" content="Project page for PAPER_TITLE">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -18,21 +18,37 @@
   <style>
     body {
       padding-top: 30px;
-      font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif !important;
       line-height: 1.58;
       color: #202124;
+      counter-reset: fig tab;
     }
-    h1, h2, h3, p, li, td, th, .ins_text, .authors {
-      font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    h1, h2, h3, p, li, td, th, .ins_text, .authors, .section-heading, .subsection-heading, .text-body {
+      font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif !important;
+    }
+    .section-heading {
+      font-weight: 500 !important;
+      font-size: clamp(2.4rem, 4vw, 3.2rem) !important;
+      line-height: 1.2;
+      color: #202124;
+    }
+    .subsection-heading {
+      margin-top: 32px;
+      margin-bottom: 8px;
+      font-weight: 500;
+      font-size: clamp(2.15rem, 3.6vw, 2.85rem);
+      line-height: 1.25;
+      color: #202124;
     }
     .text-title {
       font-weight: 500;
       margin-top: 20px;
       font-size: clamp(2.2rem, 4.5vw, 3.4rem);
       line-height: 1.22;
+      font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif !important;
     }
     .top20 { margin-top: 20px; }
-    .bottom10 { margin-bottom: 10px; }
+    .top30 { margin-top: 30px; }
     a:hover { opacity: 0.85; transform: translateY(-2px); }
     .codebox { position: relative; }
     .copy-btn {
@@ -48,11 +64,130 @@
       overflow: auto; border: 1px solid #eee; border-radius: 8px; background: #fafafa;
       font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
     }
-    .link-btn {
-      display: inline-flex; align-items: center; margin: 0 10px 10px;
-      padding: 10px 25px; color: white; text-decoration: none;
-      border-radius: 25px; font-size: 18px; font-weight: 500;
-      transition: all 0.2s ease;
+    .exp-grid {
+      display: grid;
+      gap: 12px;
+      margin: 14px auto 8px;
+      max-width: 720px;
+    }
+    .exp-grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .exp-grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .exp-grid figure { margin: 0; text-align: center; }
+    .exp-grid img {
+      width: 92%;
+      max-width: 220px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #fff;
+    }
+    .exp-grid figcaption {
+      margin-top: 6px;
+      font-size: 1.05rem;
+      color: #555;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    .exp-grid figcaption::before {
+      content: none !important;
+      counter-increment: none;
+    }
+    .figure-box > figcaption,
+    .table-box > figcaption {
+      margin-top: 12px;
+      font-size: 1.45rem;
+      color: #555;
+      font-style: italic;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .figure-box > figcaption::before {
+      counter-increment: fig;
+      content: "Figure " counter(fig) ": ";
+      font-weight: 700;
+      font-style: normal;
+      color: #202124;
+    }
+    .table-box {
+      text-align: center;
+      margin: 16px auto 8px;
+      overflow: visible;
+    }
+    .table-box > figcaption::before {
+      counter-increment: tab;
+      content: "Table " counter(tab) ": ";
+      font-weight: 700;
+      font-style: normal;
+      color: #202124;
+    }
+    .results-table {
+      width: 100%;
+      max-width: 100%;
+      background: #fff;
+      font-size: clamp(10px, 1.05vw, 13px);
+      margin: 0 auto 4px;
+      table-layout: auto;
+    }
+    .results-table.compact {
+      max-width: 560px;
+      font-size: 1.05rem;
+    }
+    .results-table th,
+    .results-table td {
+      text-align: center;
+      vertical-align: middle !important;
+      white-space: nowrap;
+      padding: 6px 4px !important;
+    }
+    .results-table th.left,
+    .results-table td.left {
+      text-align: left;
+      white-space: normal;
+    }
+    .results-table .ours { background: #e8f0fe; }
+    .results-table .nominal { color: #888; }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin: 14px auto 8px;
+      max-width: 960px;
+    }
+    .video-grid figure { margin: 0; text-align: center; }
+    .video-grid video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #000;
+    }
+    .video-grid figcaption {
+      margin-top: 8px;
+      font-size: 1.05rem;
+      color: #555;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    .video-grid figcaption::before {
+      content: none !important;
+      counter-increment: none;
+    }
+    .poster-figure figcaption,
+    .poster-figure figcaption::before {
+      display: none !important;
+      content: none !important;
+      counter-increment: none !important;
+    }
+    @media (max-width: 767px) {
+      .exp-grid.cols-2,
+      .exp-grid.cols-3 { grid-template-columns: 1fr; max-width: 280px; }
+      .video-grid { grid-template-columns: 1fr; }
+      .results-table { font-size: 9.5px; }
+      .results-table th,
+      .results-table td { padding: 4px 2px !important; }
     }
   </style>
 </head>
@@ -60,35 +195,43 @@
 <body>
 <div class="container">
 
-  <!-- Title -->
+  <!-- Title: highlight key phrases with .text-highlight -->
   <div class="row text-center">
     <h1 class="text-title">
-      <span class="text-highlight">SHORT</span>: Full Paper Title Goes Here
+      Short Prefix
+      <span class="text-highlight" style="font-size: inherit;">Key Phrase</span>
+      Rest of Title
     </h1>
   </div>
 
   <!-- Authors -->
   <div class="row publication-authors text-center ins_text col-md-8 col-md-offset-2">
     <ul class="list-inline authors">
-      <li><a href="#">First Author</a><sup>1</sup></li>
-      <li><a href="#">Second Author</a><sup>1</sup></li>
-      <li><a href="#">Third Author</a><sup>1</sup></li>
+      <li>First Author<sup>1*</sup></li>
+      <li>Second Author<sup>1*</sup></li>
+      <li>Third Author<sup>1</sup></li>
     </ul>
   </div>
 
   <div class="row publication-authors text-center ins_text col-md-8 col-md-offset-2">
-    <span class="author-block"><sup>1</sup>Your Lab / University</span>
+    <span class="author-block">
+      <sup>1</sup>Department of Computer Science and Engineering, Washington University in St. Louis, MO 63130, USA
+    </span>
   </div>
 
   <div class="row text-center ins_text col-md-8 col-md-offset-2">
-    <sup>Optional note: equal contribution, corresponding author email, etc.</sup>
+    <sup>
+      * Equal contribution.
+      Contact:
+      <a href="mailto:you@wustl.edu">{author1, author2, author3}@wustl.edu</a>
+    </sup>
   </div>
 
-  <!-- Links (X-VLA-style Paper / Code buttons) -->
+  <!-- Links: Paper (arXiv PDF) + Code (or disabled "coming soon") -->
   <div class="row" style="margin-top: 30px; text-align: center;">
     <div class="col-md-10 col-md-offset-1">
 
-      <a href="#" target="_blank"
+      <a href="https://arxiv.org/pdf/0000.00000" target="_blank"
          style="display: inline-flex; align-items: center; margin: 0 10px;
                 padding: 10px 25px; background-color: #B31B1B; color: white;
                 text-decoration: none; border-radius: 25px; font-size: 18px;
@@ -100,7 +243,8 @@
         Paper
       </a>
 
-      <a href="#" target="_blank"
+      <!-- Active code button: set href to the GitHub repo -->
+      <a href="https://github.com/ORG/REPO" target="_blank"
          style="display: inline-flex; align-items: center; margin: 0 10px;
                 padding: 10px 25px; background-color: #24292E; color: white;
                 text-decoration: none; border-radius: 25px; font-size: 18px;
@@ -122,87 +266,143 @@
         Code
       </a>
 
+      <!-- Disabled alternative (swap with the active Code button if needed):
+      <a href="#" aria-disabled="true" title="Code coming soon" onclick="return false;"
+         style="display: inline-flex; align-items: center; margin: 0 10px;
+                padding: 10px 25px; background-color: #24292E; color: white;
+                text-decoration: none; border-radius: 25px; font-size: 18px;
+                font-weight: 500; opacity: 0.75; cursor: default;">
+        ...same GitHub SVG...
+        Code (coming soon)
+      </a>
+      -->
+
     </div>
   </div>
 
   <br>
 
-  <!-- Optional teaser video: put sources/demo.mp4 then uncomment
+  <!-- Optional framework / teaser figure (sources/fig1.svg)
   <div class="row top30">
-    <div class="col-md-8 col-md-offset-2" style="position: relative;">
-      <video id="mainVideo" autoplay loop muted playsinline style="border-radius: 12px;">
-        <source src="sources/demo.mp4" type="video/mp4">
-      </video>
+    <div class="col-md-10 col-md-offset-1 text-center">
+      <figure class="figure-box" style="margin-top: 0;">
+        <img src="sources/fig1.svg" alt="Framework overview"
+             class="center-img scale-1-0"
+             style="transform: none; margin-bottom: 12px; width: 100%; max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
+        <figcaption>Short caption for Figure 1.</figcaption>
+      </figure>
     </div>
   </div>
   -->
 
   <div id="pageTitle"></div>
 
-  <!-- Overview -->
+  <!-- Abstract -->
   <div class="row top20 text-body">
-    <h1>Overview</h1>
-    Replace this paragraph with your abstract or project overview.
-    Highlight key terms with <span class="text-blue-bold">blue bold</span> if useful.
+    <h1 class="section-heading">Abstract</h1>
+    Paste the paper abstract here. Highlight method names with
+    <span class="text-blue-bold">Blue Bold</span> when useful.
   </div>
 
-  <!-- Optional teaser figure: add sources/teaser.png (or .svg)
-  <div class="row top50 text-center">
-    <div class="col-md-8 col-md-offset-2">
-      <figure class="figure-box">
-        <img src="sources/teaser.png" alt="Teaser figure" class="center-img scale-1-0">
-        <figcaption>Short caption for the teaser figure.</figcaption>
-      </figure>
-    </div>
-  </div>
-  -->
+  <!-- Experimental results (optional): figures, tables, videos -->
+  <div class="row top20 text-body">
+    <h1 class="section-heading">Experimental results</h1>
+    <p>
+      One short paragraph summarizing the evaluation setting, metrics, and baselines.
+      Use <span class="text-blue-bold">method names</span> for emphasis.
+    </p>
 
-  <!-- Method / Approach -->
-  <div class="row top20">
-    <h1>Method</h1>
-    Describe the core approach in a few paragraphs. Add more
-    <span class="text-blue-bold">section blocks</span> below as needed
-    (architecture, experiments, dataset, etc.).
+    <h2 class="subsection-heading">Benchmark / setup figures</h2>
+    <figure class="figure-box" style="margin-top: 8px;">
+      <div class="exp-grid cols-3">
+        <figure><img src="sources/exp/a.png" alt="Panel A"><figcaption>(a) Panel A</figcaption></figure>
+        <figure><img src="sources/exp/b.png" alt="Panel B"><figcaption>(b) Panel B</figcaption></figure>
+        <figure><img src="sources/exp/c.png" alt="Panel C"><figcaption>(c) Panel C</figcaption></figure>
+      </div>
+      <figcaption>Replace with the main-paper setup or result figure panels.</figcaption>
+    </figure>
+
+    <h2 class="subsection-heading">Results table</h2>
+    <!-- No horizontal scrollbar: tables shrink to fit. Use .compact for narrow tables. -->
+    <figure class="table-box" style="margin-top: 12px;">
+      <table class="table table-bordered results-table compact">
+        <thead>
+          <tr>
+            <th class="left">Method</th>
+            <th>Metric ↑</th>
+            <th>Metric ↓</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="nominal">
+            <td class="left">Baseline</td>
+            <td>0.00</td>
+            <td>0.00</td>
+          </tr>
+          <tr class="ours">
+            <td class="left">Ours</td>
+            <td><b>1.00</b></td>
+            <td><b>0.00</b></td>
+          </tr>
+        </tbody>
+      </table>
+      <figcaption>
+        Caption text. Auto-prefixed with <strong>Table N:</strong>.
+        Prefer fitting the table to the page width instead of overflow scroll.
+      </figcaption>
+    </figure>
+
+    <!-- Optional failure / demo videos
+    <h2 class="subsection-heading">Videos</h2>
+    <figure class="figure-box" style="margin-top: 8px;">
+      <div class="video-grid">
+        <figure>
+          <video controls playsinline preload="metadata">
+            <source src="sources/videos/demo_a.mp4" type="video/mp4">
+          </video>
+          <figcaption>(a) Demo A</figcaption>
+        </figure>
+        <figure>
+          <video controls playsinline preload="metadata">
+            <source src="sources/videos/demo_b.mp4" type="video/mp4">
+          </video>
+          <figcaption>(b) Demo B</figcaption>
+        </figure>
+      </div>
+      <figcaption>Optional video grid for failure cases or demos.</figcaption>
+    </figure>
+    -->
   </div>
 
+  <!-- Poster: convert poster.pdf -> sources/poster.svg (pdftocairo -svg). No Figure caption. -->
   <!--
-  <div class="row top50 text-center">
-    <div class="col-md-8 col-md-offset-2">
-      <figure class="figure-box">
-        <img src="sources/method.png" alt="Method figure" class="center-img scale-1-0">
-        <figcaption>Method overview.</figcaption>
+  <div class="row top30">
+    <div class="col-md-10 col-md-offset-1 text-center">
+      <h2 class="section-heading" style="margin-bottom: 16px;">Poster</h2>
+      <figure class="figure-box poster-figure" style="margin-top: 0;">
+        <img src="sources/poster.svg" alt="Conference poster"
+             class="center-img scale-1-0"
+             style="transform: none; margin-bottom: 0; width: 100%; max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
       </figure>
     </div>
   </div>
   -->
-
-  <!-- Results -->
-  <div class="row top20">
-    <h1>Results</h1>
-    Summarize the main empirical or theoretical findings. Drop figures into
-    <code>sources/</code> and uncomment figure blocks as needed.
-  </div>
 
   <!-- Citation -->
   <div class="row top20">
-    <h1>Citation</h1>
+    <h1 class="section-heading">Citation</h1>
     <div class="codebox">
       <button class="copy-btn" aria-label="Copy to clipboard">Copy</button>
       <pre class="codebox-pre"><code class="nohighlight">@misc{key2025,
   title={Full Paper Title Goes Here},
-  author={Author, First and Author, Second and Author, Third},
+  author={First Author and Second Author and Third Author},
   year={2025},
   eprint={0000.00000},
-  archivePrefix={arXiv}
+  archivePrefix={arXiv},
+  primaryClass={cs.RO},
+  url={https://arxiv.org/abs/0000.00000},
 }</code></pre>
     </div>
-  </div>
-
-  <!-- Acknowledgements -->
-  <div class="row top20">
-    <h1>Acknowledgements</h1>
-    Optional funding and thanks. Layout inspired by common academic project pages
-    such as <a href="https://thu-air-dream.github.io/X-VLA/" target="_blank">X-VLA</a>.
   </div>
 
 </div>

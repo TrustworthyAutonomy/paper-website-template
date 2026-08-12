@@ -154,11 +154,11 @@ body {
 }
 
 .figure-box figcaption {
-  font-size: 0.9em;        /* 小一号 */
-  color: #666;             /* 灰色 */
-  font-style: italic;      /* 斜体 */
-  text-align: center;      /* 居中 */
-  line-height: 1.4;        /* 让多行文字更易读 */
+  font-size: 1.2rem;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.45;
 }
 
 .figure-box figcaption::before {
