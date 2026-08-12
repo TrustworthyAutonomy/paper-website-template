@@ -1,50 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Paper</title>
-    <meta name="description" content="Project page for a research paper" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <main class="page">
-      <header class="header">
-        <h1 id="paper-title">Paper title</h1>
-        <p class="authors" id="authors"></p>
-        <p class="affiliations" id="affiliations"></p>
-        <p class="venue" id="venue"></p>
-        <div class="links" id="links"></div>
-      </header>
+<head>
+  <meta charset="UTF-8">
+  <title>Paper Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Project page template">
 
-      <figure class="teaser" id="teaser" hidden>
-        <img id="teaser-image" src="" alt="" />
-        <figcaption id="teaser-caption"></figcaption>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body { padding-top: 30px; }
+    .text-title { font-weight: bold; margin-top: 20px; }
+    .top20 { margin-top: 20px; }
+    .bottom10 { margin-bottom: 10px; }
+    .codebox-pre { background: #f8f8f8; padding: 10px; }
+    a:hover { opacity: 0.85; transform: translateY(-2px); }
+    .codebox { position: relative; }
+    .copy-btn {
+      position: absolute; top: 8px; right: 8px;
+      padding: 4px 10px; font-size: 12px; line-height: 1;
+      border: 1px solid #ddd; border-radius: 6px; background: #f7f7f7;
+      cursor: pointer;
+    }
+    .copy-btn:active { transform: translateY(1px); }
+    .codebox-pre {
+      margin: 0; padding: 14px;
+      overflow: auto; border: 1px solid #eee; border-radius: 8px; background: #fafafa;
+    }
+    .link-btn {
+      display: inline-flex; align-items: center; margin: 0 10px 10px;
+      padding: 10px 25px; color: white; text-decoration: none;
+      border-radius: 25px; font-size: 18px; font-weight: 500;
+      transition: all 0.2s ease;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- Title -->
+  <div class="row text-center">
+    <h1 class="text-title">
+      <span class="text-highlight">SHORT</span>: Full Paper Title Goes Here
+    </h1>
+  </div>
+
+  <!-- Authors -->
+  <div class="row publication-authors text-center ins_text col-md-8 col-md-offset-2">
+    <ul class="list-inline authors">
+      <li><a href="#">First Author</a><sup>1</sup></li>
+      <li><a href="#">Second Author</a><sup>1</sup></li>
+      <li><a href="#">Third Author</a><sup>1</sup></li>
+    </ul>
+  </div>
+
+  <div class="row publication-authors text-center ins_text col-md-8 col-md-offset-2">
+    <span class="author-block"><sup>1</sup>Your Lab / University</span>
+  </div>
+
+  <div class="row text-center ins_text col-md-8 col-md-offset-2">
+    <sup>Optional note: equal contribution, corresponding author email, etc.</sup>
+  </div>
+
+  <!-- Links -->
+  <div class="row" style="margin-top: 30px; text-align: center;">
+    <div class="col-md-10 col-md-offset-1">
+      <a class="link-btn" href="#" target="_blank" style="background-color: #B31B1B;">Paper</a>
+      <a class="link-btn" href="#" target="_blank" style="background-color: #24292E;">Code</a>
+      <a class="link-btn" href="#" target="_blank" style="background-color: #FF0000;">Video</a>
+      <br><br>
+      <span>Optional one-line announcement under the buttons.</span>
+    </div>
+  </div>
+
+  <br>
+
+  <!-- Optional teaser video: put sources/demo.mp4 then uncomment
+  <div class="row top30">
+    <div class="col-md-8 col-md-offset-2" style="position: relative;">
+      <video id="mainVideo" autoplay loop muted playsinline style="border-radius: 12px;">
+        <source src="sources/demo.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  -->
+
+  <div id="pageTitle"></div>
+
+  <!-- Overview -->
+  <div class="row top20 text-body">
+    <h1>Overview</h1>
+    Replace this paragraph with your abstract or project overview.
+    Highlight key terms with <span class="text-blue-bold">blue bold</span> if useful.
+  </div>
+
+  <!-- Optional teaser figure: add sources/teaser.png (or .svg)
+  <div class="row top50 text-center">
+    <div class="col-md-8 col-md-offset-2">
+      <figure class="figure-box">
+        <img src="sources/teaser.png" alt="Teaser figure" class="center-img scale-1-0">
+        <figcaption>Short caption for the teaser figure.</figcaption>
       </figure>
+    </div>
+  </div>
+  -->
 
-      <section id="overview">
-        <h2>Overview</h2>
-        <p id="abstract"></p>
-      </section>
+  <!-- Method / Approach -->
+  <div class="row top20">
+    <h1>Method</h1>
+    Describe the core approach in a few paragraphs. Add more
+    <span class="text-blue-bold">section blocks</span> below as needed
+    (architecture, experiments, dataset, etc.).
+  </div>
 
-      <div id="sections"></div>
+  <!--
+  <div class="row top50 text-center">
+    <div class="col-md-8 col-md-offset-2">
+      <figure class="figure-box">
+        <img src="sources/method.png" alt="Method figure" class="center-img scale-1-0">
+        <figcaption>Method overview.</figcaption>
+      </figure>
+    </div>
+  </div>
+  -->
 
-      <section id="citation">
-        <h2>Citation</h2>
-        <div class="bib-wrap">
-          <button type="button" class="copy-btn" id="copy-bibtex">Copy</button>
-          <pre><code id="bibtex"></code></pre>
-        </div>
-      </section>
-    </main>
+  <!-- Results -->
+  <div class="row top20">
+    <h1>Results</h1>
+    Summarize the main empirical or theoretical findings. Drop figures into
+    <code>sources/</code> and uncomment figure blocks as needed.
+  </div>
 
-    <script src="js/config.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+  <!-- Citation -->
+  <div class="row top20">
+    <h1>Citation</h1>
+    <div class="codebox">
+      <button class="copy-btn" aria-label="Copy to clipboard">Copy</button>
+      <pre class="codebox-pre"><code class="nohighlight">@misc{key2025,
+  title={Full Paper Title Goes Here},
+  author={Author, First and Author, Second and Author, Third},
+  year={2025},
+  eprint={0000.00000},
+  archivePrefix={arXiv}
+}</code></pre>
+    </div>
+  </div>
+
+  <!-- Acknowledgements -->
+  <div class="row top20">
+    <h1>Acknowledgements</h1>
+    Optional funding and thanks. Layout inspired by common academic project pages
+    such as <a href="https://thu-air-dream.github.io/X-VLA/" target="_blank">X-VLA</a>.
+  </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+  (function () {
+    document.querySelectorAll('.codebox').forEach(function (box) {
+      const btn = box.querySelector('.copy-btn');
+      const codeEl = box.querySelector('pre code');
+      btn.addEventListener('click', async function () {
+        const text = (codeEl.innerText || codeEl.textContent || '').replace(/^\n+|\n+$/g, '');
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.textContent = 'Copied!';
+        } catch (err) {
+          const ta = document.createElement('textarea');
+          ta.value = text; document.body.appendChild(ta);
+          ta.select(); document.execCommand('copy');
+          document.body.removeChild(ta);
+          btn.textContent = 'Copied!';
+        }
+        setTimeout(() => (btn.textContent = 'Copy'), 1500);
+      });
+    });
+  })();
+</script>
+</body>
 </html>

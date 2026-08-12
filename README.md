@@ -1,24 +1,19 @@
 # Paper Website Template
 
-Simple academic project page (title → authors → links → overview → citation), similar in spirit to pages like [X-VLA](https://thu-air-dream.github.io/X-VLA/).
+Academic project-page layout adapted from pages like [X-VLA](https://thu-air-dream.github.io/X-VLA/) (Bootstrap + custom CSS, centered title/authors/links, sections, figures, BibTeX copy).
 
-## Customize
+## Customize a paper
 
-Edit `js/config.js` only.
+1. Edit `index.html` (title, authors, links, sections).
+2. Put figures/videos in `sources/`.
+3. Uncomment figure/video blocks in `index.html` when assets exist.
 
-## Push template (once)
+## Push updates
 
 ```powershell
 cd F:\websites\paper-website-template
 git add .
-git commit -m "Simplify to academic project page layout"
+git commit -m "Use X-VLA-style academic project page template"
+git remote set-url origin git@github.com:TrustworthyAutonomy/paper-website-template.git
 git push
-```
-
-Mark the GitHub repo as a **Template repository** in Settings.
-
-## New paper from template
-
-```powershell
-gh repo create TrustworthyAutonomy/PaperName --public --template TrustworthyAutonomy/paper-website-template
 ```
