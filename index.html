@@ -5,6 +5,58 @@
   <title>Paper Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Project page for PAPER_TITLE">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="keywords" content="PAPER_KEYWORDS">
+  <link rel="canonical" href="https://trustworthyautonomy.github.io/REPOSITORY_NAME/">
+
+  <!-- Replace every PAPER_*, AUTHOR_*, DATE_*, ARXIV_*, and REPOSITORY_* placeholder before publishing. -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Trustworthy Autonomy Lab">
+  <meta property="og:title" content="PAPER_TITLE">
+  <meta property="og:description" content="PAPER_DESCRIPTION">
+  <meta property="og:url" content="https://trustworthyautonomy.github.io/REPOSITORY_NAME/">
+  <meta property="og:image" content="https://trustworthyautonomy.github.io/REPOSITORY_NAME/sources/SHARE_IMAGE.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Title and authors of PAPER_TITLE">
+  <meta property="article:published_time" content="DATE_YYYY-MM-DD">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PAPER_TITLE">
+  <meta name="twitter:description" content="PAPER_DESCRIPTION">
+  <meta name="twitter:image" content="https://trustworthyautonomy.github.io/REPOSITORY_NAME/sources/SHARE_IMAGE.png">
+
+  <meta name="citation_title" content="PAPER_TITLE">
+  <meta name="citation_author" content="AUTHOR_ONE">
+  <meta name="citation_author" content="AUTHOR_TWO">
+  <meta name="citation_publication_date" content="DATE_YYYY/MM/DD">
+  <meta name="citation_online_date" content="DATE_YYYY/MM/DD">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/ARXIV_ID">
+  <meta name="citation_arxiv_id" content="ARXIV_ID">
+  <meta name="citation_technical_report_institution" content="arXiv">
+  <meta name="citation_technical_report_number" content="arXiv:ARXIV_ID">
+  <meta name="citation_fulltext_html_url" content="https://trustworthyautonomy.github.io/REPOSITORY_NAME/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "PAPER_TITLE",
+    "name": "PAPER_TITLE",
+    "description": "PAPER_DESCRIPTION",
+    "author": [
+      {"@type": "Person", "name": "AUTHOR_ONE"},
+      {"@type": "Person", "name": "AUTHOR_TWO"}
+    ],
+    "datePublished": "DATE_YYYY-MM-DD",
+    "url": "https://trustworthyautonomy.github.io/REPOSITORY_NAME/",
+    "mainEntityOfPage": "https://trustworthyautonomy.github.io/REPOSITORY_NAME/",
+    "sameAs": "https://arxiv.org/abs/ARXIV_ID",
+    "image": "https://trustworthyautonomy.github.io/REPOSITORY_NAME/sources/SHARE_IMAGE.png",
+    "isPartOf": {"@type": "Periodical", "name": "arXiv"},
+    "identifier": "arXiv:ARXIV_ID",
+    "keywords": ["PAPER_KEYWORD_ONE", "PAPER_KEYWORD_TWO"]
+  }
+  </script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -59,6 +111,19 @@
       font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
     }
     .copy-btn:active { transform: translateY(1px); }
+    .lab-nav {
+      margin-bottom: 18px;
+      font-size: 1.15rem;
+    }
+    .lab-nav a, .site-footer a { color: #315f8c; }
+    .site-footer {
+      margin: 44px 0 24px;
+      padding-top: 18px;
+      border-top: 1px solid #e5e7eb;
+      color: #5f6368;
+      text-align: center;
+      font-size: 1.1rem;
+    }
     .codebox-pre {
       margin: 0; padding: 14px;
       overflow: auto; border: 1px solid #eee; border-radius: 8px; background: #fafafa;
@@ -193,7 +258,12 @@
 </head>
 
 <body>
-<div class="container">
+<main class="container">
+  <nav class="lab-nav" aria-label="Lab navigation">
+    <a href="https://trustworthyautonomy.github.io/">Trustworthy Autonomy Lab</a>
+    <span aria-hidden="true"> / </span>
+    <span>Research</span>
+  </nav>
 
   <!-- Title: highlight key phrases with .text-highlight -->
   <div class="row text-center">
@@ -231,7 +301,7 @@
   <div class="row" style="margin-top: 30px; text-align: center;">
     <div class="col-md-10 col-md-offset-1">
 
-      <a href="https://arxiv.org/pdf/0000.00000" target="_blank"
+      <a href="https://arxiv.org/pdf/0000.00000" target="_blank" rel="noopener noreferrer"
          style="display: inline-flex; align-items: center; margin: 0 10px;
                 padding: 10px 25px; background-color: #B31B1B; color: white;
                 text-decoration: none; border-radius: 25px; font-size: 18px;
@@ -244,7 +314,7 @@
       </a>
 
       <!-- Active code button: set href to the GitHub repo -->
-      <a href="https://github.com/ORG/REPO" target="_blank"
+      <a href="https://github.com/ORG/REPO" target="_blank" rel="noopener noreferrer"
          style="display: inline-flex; align-items: center; margin: 0 10px;
                 padding: 10px 25px; background-color: #24292E; color: white;
                 text-decoration: none; border-radius: 25px; font-size: 18px;
@@ -299,20 +369,20 @@
 
   <!-- Abstract -->
   <div class="row top20 text-body">
-    <h1 class="section-heading">Abstract</h1>
+    <h2 class="section-heading">Abstract</h2>
     Paste the paper abstract here. Highlight method names with
     <span class="text-blue-bold">Blue Bold</span> when useful.
   </div>
 
   <!-- Experimental results (optional): figures, tables, videos -->
   <div class="row top20 text-body">
-    <h1 class="section-heading">Experimental results</h1>
+    <h2 class="section-heading">Experimental results</h2>
     <p>
       One short paragraph summarizing the evaluation setting, metrics, and baselines.
       Use <span class="text-blue-bold">method names</span> for emphasis.
     </p>
 
-    <h2 class="subsection-heading">Benchmark / setup figures</h2>
+    <h3 class="subsection-heading">Benchmark / setup figures</h3>
     <figure class="figure-box" style="margin-top: 8px;">
       <div class="exp-grid cols-3">
         <figure><img src="sources/exp/a.png" alt="Panel A"><figcaption>(a) Panel A</figcaption></figure>
@@ -322,7 +392,7 @@
       <figcaption>Replace with the main-paper setup or result figure panels.</figcaption>
     </figure>
 
-    <h2 class="subsection-heading">Results table</h2>
+    <h3 class="subsection-heading">Results table</h3>
     <!-- No horizontal scrollbar: tables shrink to fit. Use .compact for narrow tables. -->
     <figure class="table-box" style="margin-top: 12px;">
       <table class="table table-bordered results-table compact">
@@ -353,7 +423,7 @@
     </figure>
 
     <!-- Optional failure / demo videos
-    <h2 class="subsection-heading">Videos</h2>
+    <h3 class="subsection-heading">Videos</h3>
     <figure class="figure-box" style="margin-top: 8px;">
       <div class="video-grid">
         <figure>
@@ -390,7 +460,7 @@
 
   <!-- Citation -->
   <div class="row top20">
-    <h1 class="section-heading">Citation</h1>
+    <h2 class="section-heading">Citation</h2>
     <div class="codebox">
       <button class="copy-btn" aria-label="Copy to clipboard">Copy</button>
       <pre class="codebox-pre"><code class="nohighlight">@misc{key2025,
@@ -405,7 +475,11 @@
     </div>
   </div>
 
-</div>
+  <footer class="site-footer">
+    Part of the <a href="https://trustworthyautonomy.github.io/">Trustworthy Autonomy Lab research collection</a>
+    at Washington University in St. Louis.
+  </footer>
+</main>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

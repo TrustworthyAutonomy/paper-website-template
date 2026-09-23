@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trustworthyautonomy.github.io/REPOSITORY_NAME/sitemap.xml
